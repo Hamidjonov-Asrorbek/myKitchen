@@ -42,7 +42,7 @@ function Header() {
   // const [refresh] = useState(false);
   // const { data } = useGetData("cart", refresh);
   const [total, setTotal] = useState<number>(0);
-  const user = auth.currentUser?.providerData[0] as User | undefined;
+  const user = auth.currentUser?.providerData[0] as User;
   // console.log(user);
   const [theme, setTheme] = useState<string>(
     localStorage.getItem("darkmode") || "light"

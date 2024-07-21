@@ -19,8 +19,21 @@ type ProtectedRouteProps = {
   children: React.ReactNode;
 };
 
+const getUserFromLocalStorage = () => {
+  const storedUser = localStorage.getItem("user");
+  if (!storedUser) return null;
+
+  try {
+    const parsedUser = JSON.parse(storedUser);
+    return parsedUser;
+  } catch (e) {
+    console.error("Invalid JSON in localStorage for 'user':", e);
+    return null;
+  }
+};
+
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const user = JSON.parse(localStorage.getItem("user") ?? "false");
+  const user = getUserFromLocalStorage();
 
   return user ? <>{children}</> : <Navigate to="/login" />;
 };
