@@ -1,0 +1,9 @@
+.pages a .active {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0px 0px 8px #7875b5;
+  transition: all 0.5s;
+  transform: scale(1.1);
+  background-color: #d9d9e5;
+  padding: 4px;
+}
