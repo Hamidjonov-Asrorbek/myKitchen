@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, FormEvent } from "react";
 import { db } from "../../firebase/config";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 // Define types using `type` keyword
 type ProductData = {
@@ -92,9 +93,11 @@ function ProductAdd({ setRefresh }: ProductAddProps) {
       setErrors({});
       setShowPreview(false);
       console.log("Document written with ID: ", docRef.id);
+      message.success("Product added successfully");
       setRefresh(true); // Optionally trigger refresh if needed
     } catch (error) {
       console.error("Error adding document: ", error);
+      message.error("Error adding product");
     }
   };
 
